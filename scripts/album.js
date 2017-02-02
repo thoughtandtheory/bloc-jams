@@ -77,6 +77,17 @@
      }
  };
 
+ var findParentByClassName = function(element, selector) {
+    if (element) {
+        var currentParent = document.getElementsByName(element).parentElement;
+        console.log(currentParent);
+        while (currentParent.className != selector && currentParent.className != null) {
+            currentParent = currentParent.parentElement;
+        }
+        console.log(currentParent);
+    }
+ };
+
   var songListContainer = document.getElementsByClassName('album-view-song-list')[0];
   var songRows = document.getElementsByClassName('album-view-song-item');
   var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
