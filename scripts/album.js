@@ -198,6 +198,18 @@ var getSongNumberCell = function(number) {
     return $('.song-item-number[data-song-number="' + number + '"]');
 };
 
+var togglePlayFromPlayerBar = function() {
+    if (currentSoundFile.isPaused()) {
+        $('[data-song-number="' + currentlyPlayingSongNumber + '"]').html(pauseButtonTemplate);
+        $('.main-controls .play-pause').html(playerBarPauseButton);
+        currentSoundFile.play();
+    } else {
+        $('[data-song-number="' + currentlyPlayingSongNumber + '"]').html(playButtonTemplate);
+        $('.main-controls .play-pause').html(playerBarPlayButton);
+        currentSoundFile.pause();      
+    }
+};
+
 $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
 
@@ -213,6 +225,8 @@ $(document).ready(function() {
             index = 0;
         }
     });
+
+    $('.main-controls .play-pause').on("click", togglePlayFromPlayerBar);
     
 });
 
